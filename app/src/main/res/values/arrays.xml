@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      ComponentIndexType 枚举名，逐字取自 DJI sample 的 arrays.xml。
+
+      刻意用静态字符串数组 + ComponentIndexType.valueOf()，而不是反射
+      ComponentIndexType.values() —— 前者是 sample 里已验证能编译的写法
+      (MopInterfaceFragment.initView)，后者多一层编译风险。
+
+      本项目默认选中 PORT_3（下标 11），依据 PSDK 侧设计文档实测值。
+      若 SDK 升级后枚举有增删，这里需同步更新。
+    -->
+    <string-array name="component_index_arrays">
+        <item>LEFT_OR_MAIN</item>
+        <item>RIGHT</item>
+        <item>UP</item>
+        <item>INDEX_3</item>
+        <item>UP_TYPE_C</item>
+        <item>UP_TYPE_C_EXT_ONE</item>
+        <item>INDEX_6</item>
+        <item>FPV</item>
+        <item>INDEX_8</item>
+        <item>PORT_1</item>
+        <item>PORT_2</item>
+        <item>PORT_3</item>
+        <item>PORT_4</item>
+        <item>PORT_5</item>
+        <item>PORT_6</item>
+        <item>PORT_7</item>
+        <item>UNKNOWN</item>
+    </string-array>
+</resources>

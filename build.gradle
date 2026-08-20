@@ -1,0 +1,24 @@
+// 顶层构建文件。与 DJI sample 工程结构不同：这里是标准单工程布局，
+// 根目录直接包含 :app 模块，没有 android-sdk-v5-as 那种"壳工程 + 平级源码目录"的映射。
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.7.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://repo1.maven.org/maven2' }
+        google()
+        mavenCentral()
+        // 若 DJI 提供定制 aar，放到 app/libs 下走本地依赖
+        flatDir { dirs "$rootDir/app/libs" }
+    }
+}

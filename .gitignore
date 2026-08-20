@@ -1,0 +1,25 @@
+# Android / Gradle 构建产物
+build/
+.gradle/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# 本机专属，绝不入库（含 Android SDK 绝对路径）
+local.properties
+
+# 签名文件
+*.jks
+*.keystore
+*.p12
+
+# IDE
+.idea/
+*.iml
+.DS_Store
+captures/
+
+# 日志
+*.log
