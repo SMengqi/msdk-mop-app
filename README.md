@@ -181,6 +181,13 @@ channel.compat = MopCompatMode(rawFullBuffer = true)   // 只还原第 2 项
    │    → 见下方"已知未验证项"
    └─ 成功 ↓
 
+1b. 打包阶段失败：`app-debug.apk is not writeable`
+   → **不要在网络驱动器 / 映射盘上构建**（如 Windows 的 Z:）。Gradle 的文件锁
+     语义在 SMB 上不可靠，权限映射也常出问题。
+   → 依次尝试：删掉整个 `app/build` 目录 → 确认无进程占用 APK（AS 的 Gradle
+     daemon、adb、杀毒软件实时扫描）→ 把工程移到本地盘。
+   → 最干净的做法：直接在本地盘 `git clone` 本仓库。
+
 2. 真机安装运行，看状态栏
    ├─ 一直停在"SDK 初始化中"
    │    → 看 logcat tag MsdkManager 的 onInitProcess 事件序列
@@ -226,6 +233,7 @@ channel.compat = MopCompatMode(rawFullBuffer = true)   // 只还原第 2 项
 | 收到的内容缺失/错位 | **不是 bug**：MOP 是流不是消息，见下 | 上层加分帧 |
 | 长跑数小时后崩 `StackOverflowError` | 用回了 sample 的递归实现 | 确认跑的是本工程的 `MopChannel` |
 | 主线程卡顿、ANR | 流速率高时 `deliverOnMainThread` 开着 | 关掉该开关 |
+| 启动即崩 `UnsatisfiedLinkError` | native 库未按解压方式打包 | 确认 `app/build.gradle` 的 `packagingOptions.jniLibs.useLegacyPackaging = true` 与 manifest 的 `android:extractNativeLibs="true"` 一致。AGP 8 以 Gradle DSL 为准，只写 manifest 属性无效 |
 
 ### 关于"块 ≠ 消息"
 

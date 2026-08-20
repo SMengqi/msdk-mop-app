@@ -53,6 +53,14 @@ android {
     }
 
     packagingOptions {
+        // 必须与 AndroidManifest 的 android:extractNativeLibs="true" 保持一致。
+        // AGP 8 以本 DSL 为准，manifest 里那个属性会被忽略；默认值 false 表示
+        // native 库不解压、直接从 APK 映射加载，MSDK 的 .so 在那种模式下会
+        // 报 UnsatisfiedLinkError。不配这一项只会出警告，但真机上必炸。
+        jniLibs {
+            useLegacyPackaging = true
+        }
+
         // mrtc 库使用 NDK c++_shared，与其他库重复，取其一
         pickFirst 'lib/arm64-v8a/libc++_shared.so'
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
