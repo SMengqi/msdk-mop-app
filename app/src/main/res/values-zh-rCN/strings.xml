@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      简体中文文案。遥控器（RC Pro 等）系统语言通常为中文，会优先取这里的值。
+      只覆盖需要本地化的条目，其余回落到 values/strings.xml。
+    -->
+    <string name="app_name">MOP 客户端</string>
+
+    <string name="status_idle">SDK 未初始化</string>
+    <string name="status_initializing">SDK 初始化中：%1$s</string>
+    <string name="status_registered">SDK 已注册</string>
+    <string name="status_register_failed">SDK 注册失败：%1$s</string>
+    <string name="status_streaming">接收中：%1$d 块 / %2$d 字节　末块：%3$s</string>
+
+    <string name="label_pipeline_id">通道</string>
+    <string name="label_component">组件</string>
+    <string name="action_reset_config">恢复默认</string>
+
+    <string name="compat_sample_original">兼容模式(sample 原样)</string>
+
+    <string name="action_connect">连接 MOP</string>
+    <string name="action_disconnect">断开</string>
+    <string name="action_send">发送</string>
+
+    <string name="hint_payload">要发送给 PSDK 的内容</string>
+    <string name="label_log">收发日志</string>
+</resources>

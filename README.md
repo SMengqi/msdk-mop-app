@@ -294,4 +294,7 @@ SDKManager.init(ctx, callback)
 - [ ] 吞吐压测：字节总数与发送端比对（验证不丢块）、连续跑数小时（验证递归→循环的修复）
 - [ ] 若 PSDK 侧发的是离散消息，加分帧层
 - [ ] 跑通后改包名 + 换新 App Key
+- [ ] **换掉 App 图标** —— 当前 `res/mipmap-xxxhdpi/ic_main.png` 直接取自 DJI sample，
+      是 DJI 的图形资源。台架调试无妨，对外交付前应替换为自己的图标
+      （AS 里 `res` 右键 → New → Image Asset 可一次生成各密度）
 - [ ] 实测 release 包（`minifyEnabled true`）
