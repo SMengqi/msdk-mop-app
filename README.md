@@ -1,5 +1,8 @@
 # MOP Client
 
+> ⏸️ **本项目已于 2026-08-20 搁置**（构建通过，未与 PSDK 联调）。
+> 重启前请先读 **[STATUS.md](STATUS.md)** —— 那里记录了验证边界、遗留疑问和接手步骤。
+
 基于 DJI Mobile SDK V5 (5.18.0) 的独立 MOP 通道客户端，用于与自研 PSDK 负载做**流式数据**收发。
 
 从官方 sample 工程（`Mobile-SDK-Android-V5/SampleCode-V5`）抽取而来，只保留 MOP 所需部分，不依赖 uxsdk。
@@ -260,7 +263,11 @@ channel.compat = MopCompatMode(rawFullBuffer = true)   // 只还原第 2 项
 | 三个 MSDK aar 能否解析 | `app/build.gradle` | 开发机 Gradle 缓存中没有下载过 |
 | release 包 R8 规则是否足够 | `app/proguard-rules.pro` | sample 开了 `minifyEnabled` 却无任何规则文件，本工程补齐了，但未实测 release 包 |
 
-已验证的部分：Gradle 8.12 wrapper 正常启动，`settings.gradle` / 根 `build.gradle` / `gradle.properties` 解析无误，AGP 8.7.0 与 Kotlin 2.1.0 插件成功解析，`:app` 模块进入配置阶段。
+**已验证的部分**（2026-08-20 在 Windows + Android Studio 上完成）：三个 MSDK aar 解析、
+`@xml/accessory_filter` 解析、Kotlin 全量编译、资源打包、dex、APK 打包全部通过。
+上表中「aar 解析」「accessory_filter」两项风险已排除，此处保留仅作记录。
+
+**仍然未验证**：安装、启动、SDK 注册、MOP 连接与收发 —— 从未上机。详见 [STATUS.md](STATUS.md)。
 
 ---
 
